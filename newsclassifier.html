@@ -53,10 +53,116 @@
 
 
         <div class="portfolio-item-individual">
-            <p>
-
+            <p><b>Introduction</b></p>
+            <p>In this project, I was tasked with constructing a classifier that can categorise news articles based on their content.
+                Specifically, a dataset consisting of 20 news articles sourced from Sky News (included in the "resources" folder on <a href="https://github.com/rgeorge8/News-Classifier" target="_blank"><b><u> github</u></b></a>). 
+                These articles can be broadly classified into two distinct categories, each representing a different topic. 
+                For instance, the first category encompasses articles like the one titled "Osiris Rex’s sample from asteroid Bennu will reveal secrets of our solar system". 
+                Conversely, the second category includes articles such as the one headlined "Bitcoin slides to five month low amid wider sell-off".
+                The main idea here is to assess the semantic closeness of these 20 news articles by using the Term Frequency-Inverse Document Frequency (TF-IDF) embedding.
             </p>
-            
+
+            <p>
+                <br>
+            </p>
+
+            <p><b> Term Frequency-Inverse Document Frequency (TF-IDF) Embedding</b></p>
+            <p>TF-IDF is a popular numerical statistic that reflects how important a word is to a document in a collection or corpus. 
+                It’s a widely used technique in information retrieval and text mining to evaluate the relevance of words within documents in a dataset. 
+                TF-IDF Embedding is a technique where text documents are converted into vector representations such that each document is represented as a vector in a multidimensional space. 
+                Each dimension in this space corresponds to a unique word in the corpus vocabulary, and the value in each dimension is the TF-IDF weight of that word in the respective document. 
+                A major advantage of using high-dimensional vectors for document representation is their compatibility with further numerical processing tasks, such as input for neural networks. 
+                In essence, TF-IDF Embedding acts as a vectorisation procedure. 
+                Unlike one-hot encoding—which uniquely numerically identifies each vocabulary word, equating the maximum number to the vocabulary’s size—TF-IDF Embedding maintains words’ intrinsic relevance (or weight) throughout the transformation phase.
+            </p>
+
+            <p> As suggested by its name, TF-IDF assigns a score or vectorises a word by calculating the product of the word’s Term Frequency (TF) and the Inverse Document Frequency (IDF).
+            </p>
+                <p class="indentonce"><b>Term Frequency:</b> The TF represents the occurrence of a term or word in relation to the document’s total word count, expressing how frequently a specific term appears
+                within it. TF is calculated by:
+                </p>
+            <img src="tfcalc.png" alt="" class="portfolio-item-individual-img">
+                <p class="indentonce">where ft,d is the number of times a word (t) appears in a document d, and ∑t′∈d ft′,d is the total number of words in that document.
+                </p>
+
+                <p class="indentonce"><b> Inverse Document Frequency: </b>The IDF signifies the representation of a term based on its occurrence across various documents in a corpus. 
+                    It quantifies the rarity of a term by determining how frequently it appears, offering insight into the term’s uniqueness or commonality within the corpus. 
+                    It is calculated by:
+                </p>
+            <img src="idfcalc.png" alt="" class="portfolio-item-individual-img">
+                <p class="indentonce">where N is the total number of documents in the corpus, |{d ∈ D :t ∈d}| is the number of documents where the word t appears, and log is a natural logarithm (base e).
+                </p>
+
+                <p class="indentonce">Then the final TF-IDF is calculated as:
+                </p>
+            <img src="tfidfcalc.png" alt="" class="portfolio-item-individual-img">    
+
+            <p>
+                <br>
+            </p>
+
+            <p><b>Measuring the semantic closeness</b></p>
+            <p> Computational linguistics research holds that word (or document) meaning can be represented by its contextual information because similar contextual distributions tend to share between semantically similar words.
+                Moreover, the "closeness" of two words/documents can bemeasured by <i>Cosine Similarity</i> (CS) (also called cosine distance). 
+                CS is a measure of the cosine of the angle between two non-zero vectors. 
+            </p>
+            <p class="indentonce">It is calculated by: </p>
+            <img src="cscalc.png" alt="" class="portfolio-item-individual-img">
+            <p class="indentonce">
+                where <i>U</i> is the vector representation of item 1 (in our case V<sub>D1</sub>) and <i>V</i> is the vector representation of the D2 (V<sub>D2</sub>).
+                <i>u<sub>i</sub></i> i sthe i-th element in <i>U</i>, and <i>v<sub>i</sub></i> is the i-th element in <i>V</i>.
+            </p>
+            <p>To identify the most similar document to the first document (D1), we can calculate its CS value with all the other documents, in this case <i>CS(V<sub>D1</sub>,V<sub>D2</sub>)</i> and <i>CS(V<sub>D1</sub>,V<sub>D3</sub>)</i>. 
+                Then the higher the CS value is, the closer a document is to D1.
+            </p>
+            <p>Assuming that D1 and D2 belong to two different groups and the goal is to determine which group D3 should belong. 
+                Then we can calculate <i>CS(V<sub>D1</sub>,V<sub>D3</sub>)</i> and <i>CS(V<sub>D2</sub>,V<sub>D3</sub>)</i>. 
+                If <i>CS(V<sub>D1</sub>,V<sub>D3</sub>)</i> > <i>CS(V<sub>D2</sub>,V<sub>D3</sub>)</i> then D3 is more semantically close to D1, and therefore should belong to the first group.
+            </p>
+
+            <p>
+                <br>
+            </p>
+
+            <p><b>The Main Tasks</b></p>
+            <p>Using the logic stated above, there were 4 main tasks to this project:-</p>
+            <p class="indentonce">Task 1:</p>
+            <p class="indenttwice">Build an HTML parser that can extract the title and the content of the news articles from the HTML code stored in the myHTMLS variable.
+            </p>
+
+            <p class="indentonce">Task 2:</p>
+            <p class="indenttwice"> Natural Language Processing (NLP). 
+                The first pre-processing task is text cleaning. We need to convert the content to lowercase and remove all the special characters from the extracted content. 
+                Second, text lemmatizatiion. Essentially, it involves the process of transforming a word into its simplest form, which allows various inflexions and derivations of a word to be analyzed as a single item. 
+                Lastly, we remove stop-words such as ’and’, ’the’, ’is’, and ’in’, which are considered to be of little value in text analysis because they occur frequently across various documents and are generally not essential for understanding the text’s context or semantics.
+            </p>
+
+            <p class="indentonce">Task 3:</p>
+            <p class="indenttwice">Converting the comparasions between documents into vectors.
+            </p>
+
+            <p class="indentonce">Task 4:</p>
+            <p class="indenttwice">Piece everything together.<br></p>
+            <p class="indentthrice">
+                -Load the data from the html documents<br>
+                -Preprocess them (NLP)<br>
+                -Calculate the TF-IDF Embedding<br>
+                -Build a vocabulary list based on the cleaned content<br>
+                -Calculate the Cosine Similarity between a news item and all the others<br>
+                -Group the results
+            </p>
+
+            <p>
+                <br>
+            </p>
+            <p>We are then left with our expected outcome.</p>
+            <p>
+                <br>
+            </p>
+
+            <img src="newsclassifiertests.png" alt="portfolio-item-individual-img">
+
+
 
         </div>
 
