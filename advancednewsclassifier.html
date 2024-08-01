@@ -53,10 +53,54 @@
 
 
         <div class="portfolio-item-individual">
-            <p>
+            <p><b>Breakdown of the project</b></p>
+            <p>In this project, I was tasked with constructing an advanced news classifier utilising GloVe Embedding and Machine Learning. 
+            <p>There were 6 main tasks:</p>
 
+            <p class="indentonce"> Task 1:</p>
+            <p class="indenttwice"> I had to write code that will read data from the files and create the associated Glove objective. Unlike the TF-IDF Embedding in the news classifier, in the advanced news classifier these Glove 
+            objectives are word-level embedding (or vectorisation) instead of document-level. So each news article has one single embedding that represents its content.
+            </p>
+
+            <p class="indentonce">Task 2:</p>
+            <p class="indenttwice">I had to get the basic information about the news articles (located in the resources\News folder on <a href="https://github.com/rgeorge8/Advanced-News-Classifier" target="_blank"><b><u> github</u></b></a>). 
+            This included coding the relevant get and set methods and writing code to extract the:
+            </p>
+            <p class="indentthrice">
+                -News title<br>
+                -News content<br>
+                -News Type (whether it is training or testing data)<br>
+                -News Label (the label refers to the output or target variable a model tries to predict or classify in machine learning)
             </p>
             
+            <p class="indentonce">Task 3:</p>
+            <p class="indenttwice">
+                Using a BufferedReader to read data from the Glove file line by line and adding different parts of the document to different lists, e.g. its vector representation to a list called listVectors.
+            </p>
+
+            <p class="indentonce">Task 4:</p>
+            <p class="indenttwice">Performing text cleaning tasks (text lemmatizatiion and stop word removal) on the data and populating the Glove list. Only non-stop words have a Glove object created.
+            </p>
+
+            <p class="indentonce">Task 5:</p>
+            <p class="indenttwice">Creating an array using ND4J (N-Dimensional Arrays for Java). The array is formed by the embeddings of words, which are retrieved from the Glove object list.
+            </p>
+
+            <p class="indentonce">Task 6:</p>
+            <p class="indenttwice">The machine learning process consists of an input NDArray, which is simply the document-level embedding, and the output NDArray, which assigns a label to the nth element of the document depending on what group it belongs to. 
+            For example, [1,0] if it belongs to the first group or [0,1] if it belongs to the second group. The code is  flexible enough to handle more than 2 newsgroups. 
+            </p>
+
+            <p>
+                <br>
+            </p>
+            <p>We are then left with our expected outcome.</p>
+            <p>
+                <br>
+            </p>
+
+
+            <img src="advancednewsclassifiertests.png" alt="">
 
         </div>
 
@@ -82,87 +126,3 @@
         <script src="index.js"></script>
 
     </body>
-
-
-</html><!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, intial-scale=1.0">
-        <title>Rachel Portfolio Website</title>
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudfare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-
-
-        <link href="https://fonts.googleapis.com/css2?family=Abel&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
-
-        <link rel="stylesheet" href="style.css">
-
-        <script src="https://kit.fontawesome.com/e4143717e9.js" crossorigin="anonymous"></script>
-
-    </head>
-    <body>
-        <header>
-            <div class="logo">
-                <img src="rachelgeorgecode.png" alt="">
-            </div>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav">
-                <ul class="nav__lists">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="index.html#about" class="nav__link">About me</a></li>
-                    <li class="nav__item"><a href="index.html#services" class="nav__link">My Services</a></li>
-                    <li class="nav__item"><a href="index.html#projects" class="nav__link">My Projects</a></li>
-                </ul>
-            </nav>
-        </header>
-
-
-
-        <!------intro------>
-
-        <section class="intro" id="home">
-            <h1 class="section__title section__title--intro">
-                Project 3: <strong>Advanced News Classifier</strong>
-            </h1>
-            <p class="section__subtitle section__subtitle--intro">Java</p>
-            <img src="newspic.png" alt="dice game background light" class="intro__img">
-        </section>
-
-
-        <div class="portfolio-item-individual">
-            <p>
-
-            </p>
-            
-
-        </div>
-
-
-
-
-
-        <!------footer------>
-        <footer class="footer">
-            <a href="mailto:rachel.george.uk@outlook.com" class="footer__link">rachel.george.uk@outlook.com</a>
-            <ul class="social-list">
-                <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.linkedin.com/in/rachel-george-68a2682b2/">
-                        <i class="fa-brands fa-linkedin fa-xl" style="color: #000000;"></i>
-                    </a>
-                </li>
-            </ul>
-        </footer>
-
-        <script src="index.js"></script>
-
-    </body>
-
-
-</html>
