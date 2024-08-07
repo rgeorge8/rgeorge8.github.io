@@ -1,107 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, intial-scale=1.0">
-        <title>Rachel Portfolio Website</title>
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudfare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-        <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css"
-        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
-
-
-        <link href="https://fonts.googleapis.com/css2?family=Abel&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
-
-        <link rel="stylesheet" href="style.css">
-
-        <script src="https://kit.fontawesome.com/e4143717e9.js" crossorigin="anonymous"></script>
-
-    </head>
-    <body>
-        <header>
-            <div class = "logo">
-                <a href="index.html" class="logo">
-                    <img src="rachelgeorgecode.png" alt="" class="">
-                </a>
-            </div>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav">
-                <ul class="nav__lists">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="index.html#about" class="nav__link">About me</a></li>
-                    <li class="nav__item"><a href="index.html#services" class="nav__link">What I do</a></li>
-                    <li class="nav__item"><a href="index.html#projects" class="nav__link">My Projects</a></li>
-                </ul>
-            </nav>
-        </header>
-
-
-
-        <!------intro------>
-
-        <section class="intro" id="home">
-            <h1 class="section__title section__title--intro">
-                Project 1: <strong>Dice Game</strong>
-            </h1>
-            <p class="section__subtitle section__subtitle--intro">Python</p>
-            <img src="dicegamepic.png" alt="dice game background light" class="intro__img">
-        </section>
-
-
-        <div class="portfolio-item-individual">
-            <p> The task was to design, develop, test and evaluate a program that:</p>
-            <p class="indentonce">
-                1. Allows two players to enter their details, which are then authenticated to ensure that they are 
-                authorised players.<br>
-                2. Allows each player to roll two 6-sided dice.<br>
-                3. Calculates and outputs the points for each round and each player’s total score.<br>
-                <p class="indenttwice">
-                    •  The points rolled on each player’s dice are added to their score. <br>
-                    •  If the total is an even number, an additional 10 points are added to their score. <br>
-                    •  If the total is an odd number, 5 points are subtracted from their score. <br>
-                    •  If they roll a double, they get to roll one extra die and get the number of points rolled added to their score. <br>
-                    •  The score of a player cannot go below 0 at any point. <br>
-                    •  The person with the highest score at the end of the 5 rounds wins. <br>
-                    •  If both players have the same score at the end of the 5 rounds, they each roll 1 die and whoever gets the highest score wins (this repeats until someone wins). <br>
-                </p>
-            </p>
-            <p class="indentonce">
-                4. Allows the players to play 5 rounds. <br>
-                5. If both players have the same score after 5 rounds, allows each player to roll 1 die each until someone wins. <br>
-                6. Outputs who has won at the end of the 5 rounds.<br>
-                7. Stores the winner’s score, and their name, in an external file. <br>
-                8. Displays the score and player name of the top 5 winning scores from the external file <br>
-            </p>
-        
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachel Portfolio Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css"
+          integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <script src="https://kit.fontawesome.com/e4143717e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo">
+                <img src="rachelgeorgecode.png" alt="" class="">
+            </a>
         </div>
-
-
-
-
-
-        <!------footer------>
-        <footer class="footer">
-            <a href="mailto:rachel.george.uk@outlook.com" class="footer__link">rachel.george.uk@outlook.com</a>
-            <ul class="social-list">
-                <li class="social-list__item">
-                    <a class="social-list__link" href="https://www.linkedin.com/in/rachel-george-68a2682b2/">
-                        <i class="fa-brands fa-linkedin fa-xl" style="color: #000000;"></i>
-                    </a>
-                    <a class="social-list__link" href="https://github.com/rgeorge8">
-                        <i class="fa-brands fa-github fa-xl" style="color: #000000;"></i>
-                    </a>
-                </li>
+        <button class="nav-toggle" aria-label="toggle navigation">
+            <span class="hamburger"></span>
+        </button>
+        <nav class="nav">
+            <ul class="nav__lists">
+                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="index.html#about" class="nav__link">About me</a></li>
+                <li class="nav__item"><a href="index.html#services" class="nav__link">What I do</a></li>
+                <li class="nav__item"><a href="index.html#projects" class="nav__link">My Projects</a></li>
             </ul>
-        </footer>
+        </nav>
+    </header>
 
-        <script src="index.js"></script>
+    <!------intro------>
+    <section class="intro" id="home">
+        <h1 class="section__title section__title--intro">
+            Project 1: <strong>Dice Game</strong>
+        </h1>
+        <p class="section__subtitle section__subtitle--intro">Python</p>
+        <img src="dicegamepic.png" alt="dice game background light" class="intro__img">
+    </section>
 
-    </body>
+    <div class="portfolio-item-individual">
+        <p>The task was to design, develop, test and evaluate a program that:</p>
+        <p class="indentonce">
+            1. Allows two players to enter their details, which are then authenticated to ensure that they are authorised players.<br>
+            2. Allows each player to roll two 6-sided dice.<br>
+            3. Calculates and outputs the points for each round and each player’s total score.<br>
+            <p class="indenttwice">
+                • The points rolled on each player’s dice are added to their score. <br>
+                • If the total is an even number, an additional 10 points are added to their score. <br>
+                • If the total is an odd number, 5 points are subtracted from their score. <br>
+                • If they roll a double, they get to roll one extra die and get the number of points rolled added to their score. <br>
+                • The score of a player cannot go below 0 at any point. <br>
+                • The person with the highest score at the end of the 5 rounds wins. <br>
+                • If both players have the same score at the end of the 5 rounds, they each roll 1 die and whoever gets the highest score wins (this repeats until someone wins). <br>
+            </p>
+        </p>
+        <p class="indentonce">
+            4. Allows the players to play 5 rounds. <br>
+            5. If both players have the same score after 5 rounds, allows each player to roll 1 die each until someone wins. <br>
+            6. Outputs who has won at the end of the 5 rounds.<br>
+            7. Stores the winner’s score, and their name, in an external file. <br>
+            8. Displays the score and player name of the top 5 winning scores from the external file <br>
+        </p>
+    </div>
 
+    <h1>PyScript Dice Game</h1>
 
+    <div class="portfolio-item-individual">
+        <h2>Player 1 Login</h2>
+        <input type="text" id="username1" placeholder="Enter your name">
+        <button id="login-btn1">Login</button>
+        <div id="login-msg1"></div>
+    </div>
+
+    <div>
+        <h2>Player 2 Login</h2>
+        <input type="text" id="username2" placeholder="Enter your name">
+        <button id="login-btn2">Login</button>
+        <div id="login-msg2"></div>
+    </div>
+
+    <div id="game-rules">
+        <h2>Game Rules</h2>
+        <p>• The points rolled on each player’s dice are added to their score.</p>
+        <p>• If the total is an even number, an additional 10 points are added to their score.</p>
+        <p>• If the total is an odd number, 5 points are subtracted from their score.</p>
+        <p>• If they roll a double, they get to roll one extra die and get the number of points rolled added to their score.</p>
+        <p>• The score of a player cannot go below 0 at any point.</p>
+        <p>• The person with the highest score at the end of the 5 rounds wins.</p>
+        <p>• If both players have the same score at the end of the 5 rounds, they each roll 1 die and whoever gets the highest score wins (this repeats until someone wins).</p>
+    </div>
+
+    <div id="game-section">
+        <h2>Game Section</h2>
+        <div id="round-info"></div>
+        <button id="roll-dice-btn" disabled>Roll Dice</button>
+        <div id="round-result"></div>
+    </div>
+
+    <div id="final-result"></div>
+    <div id="leaderboard"></div>
+
+    <py-script>
+        import random
+        from js import document, console, alert, prompt
+
+        def login(player_num):
+            username = document.getElementById(f"username{player_num}").value
+            password = len(username)
+            login_msg = document.getElementById(f"login-msg{player_num}")
+            login = False
+            while not login:
+                pass1 = int(prompt(f"Enter password for {username} (Hint: It is the length of your username):"))
+                if pass1 == password:
+                    login_msg.innerHTML = f"Correct password - {username} authorised access."
+                    return username
+                else:
+                    alert("Incorrect password, try again.")
+
+        def rolldice():
+            roll = random.randint(1, 6)
+            return roll
+
+        def rollplayer(username, numrolls):
+            pscore = 0
+            rollone = rolldice()
+            pscore = rollone
+            if numrolls == 2:
+                rolltwo = rolldice()
+                pscore += rolltwo
+                if rollone == rolltwo:
+                    rollthree = rolldice()
+                    pscore += rollthree
+            if pscore % 2 == 0:
+                pscore += 10
+            else:
+                pscore -= 5
+                if pscore < 0:
+                    pscore = 0
+            return pscore
+
+        def play_round():
+            global roundnum, p1totalscore, p2totalscore, scores_equal, username1, username2
+            round_info = document.getElementById("round-info")
+            round_result = document.getElementById("round-result")
+            final_result = document.getElementById("final-result")
+
+            if scores_equal:
+                round_info.innerHTML = f"ADDITIONAL ROUND<br>Roll 1 die for each player."
+            else:
+                round_info.innerHTML = f"ROUND {roundnum}<br>Roll 2 dice for each player."
+
+            round_result.innerHTML = ""
+
+            p1score = rollplayer(username1, 1 if scores_equal else 2)
+            p1totalscore += p1score
+            round_result.innerHTML += f"{username1} rolled a total of {p1score}, total score: {p1totalscore}<br>"
+
+            p2score = rollplayer(username2, 1 if scores_equal else 2)
+            p2totalscore += p2score
+            round_result.innerHTML += f"{username2} rolled a total of {p2score}, total score: {p2totalscore}<br>"
+
+            if roundnum >= 5 and not scores_equal:
+                if p1totalscore > p2totalscore:
+                    final_result.innerHTML = f"Congratulations {username1}, you won with {p1totalscore} points!"
+                elif p2totalscore > p1totalscore:
+                    final_result.innerHTML = f"Congratulations {username2}, you won with {p2totalscore} points!"
+                else:
+                    final_result.innerHTML = "Scores are equal, rolling one more die for each player to determine the winner."
+                    scores_equal = True
+                    play_round()
+                return
+
+            if p1totalscore != p2totalscore:
+                scores_equal = False
+                roundnum += 1
+            else:
+                scores_equal = True
+
+            round_info.innerHTML += f"Round {roundnum} will start next."
+
+        def set_username(player_num):
+            global username1, username2
+            username = login(player_num)
+            if player_num == 1:
+                username1 = username
+            else:
+                username2 = username
+            if username1 and username2:
+                document.getElementById("roll-dice-btn").disabled = False
+
+        def init_game():
+            document.getElementById("login-btn1").addEventListener("click", lambda: set_username(1))
+            document.getElementById("login-btn2").addEventListener("click", lambda: set_username(2))
+            document.getElementById("roll-dice-btn").addEventListener("click", play_round)
+
+        init_game()
+    </py-script>
+
+    <!------footer------>
+    <footer class="footer">
+        <a href="mailto:rachel.george.uk@outlook.com" class="footer__link">rachel.george.uk@outlook.com</a>
+        <ul class="social-list">
+            <li class="social-list__item">
+                <a class="social-list__link" href="https://www.linkedin.com/in/rachel-george-68a2682b2/">
+                    <i class="fa-brands fa-linkedin fa-xl" style="color: #000000;"></i>
+                </a>
+                <a class="social-list__link" href="https://github.com/rgeorge8">
+                    <i class="fa-brands fa-github fa-xl" style="color: #000000;"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
 </html>
