@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript Dice Game</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <h1>PyScript Dice Game</h1>
+
+    <div>
+        <h2>Player 1 Login</h2>
+        <input type="text" id="username1" placeholder="Enter your name">
+        <button id="login-btn1">Login</button>
+        <div id="login-msg1"></div>
+    </div>
+
+    <div>
+        <h2>Player 2 Login</h2>
+        <input type="text" id="username2" placeholder="Enter your name">
+        <button id="login-btn2">Login</button>
+        <div id="login-msg2"></div>
+    </div>
+
+    <div id="game-rules">
+        <h2>Game Rules</h2>
+        <p>• The points rolled on each player’s dice are added to their score.</p>
+        <p>• If the total is an even number, an additional 10 points are added to their score.</p>
+        <p>• If the total is an odd number, 5 points are subtracted from their score.</p>
+        <p>• If they roll a double, they get to roll one extra die and get the number of points rolled added to their score.</p>
+        <p>• The score of a player cannot go below 0 at any point.</p>
+        <p>• The person with the highest score at the end of the 5 rounds wins.</p>
+        <p>• If both players have the same score at the end of the 5 rounds, they each roll 1 die and whoever gets the highest score wins (this repeats until someone wins).</p>
+    </div>
+
+    <div id="game-section">
+        <h2>Game Section</h2>
+        <div id="round-info"></div>
+        <button id="roll-dice-btn">Roll Dice</button>
+        <div id="round-result"></div>
+    </div>
+
+    <div id="final-result"></div>
+    <div id="leaderboard"></div>
+
+    <py-script>
+        import random
+        from js import document, console
+
+        def login(player_num):
+            username = document.getElementById(f"username{player_num}").value
+            password = len(username)
+            login_msg = document.getElementById(f"login-msg{player_num}")
+            login = False
+            while not login:
+                pass1 = int(prompt(f"Enter password for {username} (Hint: It is the length of your username):"))
+                if pass1 == password:
+                    login_msg.innerHTML = f"Correct password - {username} authorised access."
+                    return username
+                else:
+                    alert("Incorrect password, try again.")
+
+        def rolldice():
+            roll = random.randint(1, 6)
+            return roll
+
+        def rollplayer(username, numrolls):
+            global pscore
+            pscore = 0
+            rollone = rolldice()
+            pscore = rollone
+            if numrolls == 2:
+                rolltwo = rolldice()
+                pscore += rolltwo
+                if rollone == rolltwo:
+                    rollthree = rolldice()
+                    pscore += rollthree
+            if pscore % 2 == 0:
+                pscore += 10
+            else:
+                pscore -= 5
+                if pscore < 0:
+                    pscore = 0
+            return pscore
+
+        def start_game():
+            global roundnum, p1totalscore, p2totalscore, scores_equal, username1, username2
+            roundnum = 1
+            p1totalscore = 0
+            p2totalscore = 0
+            scores_equal = False
+            username1 = login(1)
+            username2 = login(2)
+            play_round()
+
+        def play_round():
+            global roundnum, p1totalscore, p2totalscore, scores_equal
+            round_info = document.getElementById("round-info")
+            round_result = document.getElementById("round-result")
+            final_result = document.getElementById("final-result")
+
+            if scores_equal:
+                round_info.innerHTML = f"ADDITIONAL ROUND<br>Roll 1 die for each player."
+            else:
+                round_info.innerHTML = f"ROUND {roundnum}<br>Roll 2 dice for each player."
+
+            round_result.innerHTML = ""
+
+            p1score = rollplayer(username1, 1 if scores_equal else 2)
+            p1totalscore += p1score
+            round_result.innerHTML += f"{username1} rolled a total of {p1score}, total score: {p1totalscore}<br>"
+
+            p2score = rollplayer(username2, 1 if scores_equal else 2)
+            p2totalscore += p2score
+            round_result.innerHTML += f"{username2} rolled a total of {p2score}, total score: {p2totalscore}<br>"
+
+            if roundnum >= 5 and not scores_equal:
+                if p1totalscore > p2totalscore:
+                    final_result.innerHTML = f"Congratulations {username1}, you won with {p1totalscore} points!"
+                elif p2totalscore > p1totalscore:
+                    final_result.innerHTML = f"Congratulations {username2}, you won with {p2totalscore} points!"
+                else:
+                    final_result.innerHTML = "Scores are equal, rolling one more die for each player to determine the winner."
+                    scores_equal = True
+                    play_round()
+                return
+
+            if p1totalscore != p2totalscore:
+                roundnum += 1
+            else:
+                scores_equal = True
+
+            round_info.innerHTML += f"Round {roundnum} will start next."
+
+        document.getElementById("login-btn1").addEventListener("click", lambda: login(1))
+        document.getElementById("login-btn2").addEventListener("click", lambda: login(2))
+        document.getElementById("roll-dice-btn").addEventListener("click", play_round)
+
+        start_game()
+    </py-script>
+</body>
+</html>
